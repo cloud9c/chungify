@@ -1,6 +1,6 @@
 let img,
-    dx = Math.random() < 0.5 ? -5 : 5,
-    dy = Math.random() < 0.5 ? -5 : 5;
+    dx = Math.random() < 0.5 ? -(Math.floor(Math.random() * Math.floor(10)) + 1) : Math.floor(Math.random() * Math.floor(10)) + 1,
+    dy = Math.random() < 0.5 ? -(Math.floor(Math.random() * Math.floor(10)) + 1) : Math.floor(Math.random() * Math.floor(10)) + 1;
 
 function step(timestamp) {
     var rect = img.getBoundingClientRect();
@@ -31,5 +31,6 @@ img.style.top = Math.floor(Math.random() * window.innerHeight) + "px";
 img.style.position = "absolute";
 img.style.scaleX = 0;
 img.style.scaleY = 0;
+img.style.zIndex = 99999;
 document.body.appendChild(img);
 window.requestAnimationFrame(step)
