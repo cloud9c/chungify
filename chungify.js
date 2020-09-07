@@ -4,21 +4,11 @@ let img,
 
 function step(timestamp) {
     var rect = img.getBoundingClientRect();
-    if (rect.x <= 0 && dx < 0) {
+    if (rect.x <= 0 && dx < 0 || rect.x + rect.width >= window.innerWidth && dx > 0) {
         dx *= -1;
-        img.style.left = "0px";
     }
-    if (rect.x + rect.width >= window.innerWidth && dx > 0) {
-        dx *= -1;
-        img.style.left = window.innerWidth - rect.width + "px";
-    }
-    if (rect.y <= 0 && dy < 0) {
+    if (rect.y <= 0 && dy < 0 || rect.y + rect.height >= window.innerHeight && dy > 0) {
         dy *= -1;
-        img.style.top = "0px";
-    }
-    if (rect.y + rect.height >= window.innerHeight && dy > 0) {
-        dy *= -1;
-        img.style.top = window.innerHeight - rect.height + "px";
     }
     img.style.left = parseInt(img.style.left) + dx + "px";
     img.style.top = parseInt(img.style.top) + dy + "px";
