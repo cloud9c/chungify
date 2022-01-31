@@ -2,10 +2,10 @@ drag this <a id="chungy" href="">link</a> into your bookmark bar, BT.
 
 <br>
 
-<input type="file" id="img" />
+<input type="file" id="file" />
 
 <script>
-  const s1 = `javascript: (function() {
+  let s1 = `javascript: (function() {
   let img, dx = 5, dy = 5;
 
   function step(timestamp) {
@@ -37,7 +37,7 @@ drag this <a id="chungy" href="">link</a> into your bookmark bar, BT.
   img = document.createElement("img");
   img.src = "`;
 
-  const s3 = `";
+  let s3 = `";
   img.style.left = window.innerWidth/2 + "px";
   img.style.top = window.innerHeight/2 + "px";
   img.style.position = "absolute";
@@ -63,10 +63,10 @@ let s2 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAAFnCAYAAAD67ui3AAAA
 
 const chungy = document.getElementById("chungy");
 
-s1 = btoa(s1);
-s3 = btoa(s3);
+s1 = encodeURIComponent(s1);
+s3 = encodeURIComponent(s3);
 
-chungy.href = String(s1 + s2 + s3);
+chungy.href = s1 + s2 + s3;
 
 const file = document.getElementById("file");
 const reader = new FileReader();
